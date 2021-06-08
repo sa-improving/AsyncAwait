@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Async_Thing_Module.Models
 {
@@ -42,5 +43,18 @@ namespace Async_Thing_Module.Models
 
             return seleucidResponse.Seleucids;
         }
+
+        public async Task<Teacher> GetATeacher()
+        {
+            HttpResponseMessage response = await _client.GetAsync("https://seriouslyfundata.azurewebsites.net/api/ateacher");
+            response.EnsureSuccessStatusCode();
+            string responseContent = await response.Content.ReadAsStringAsync();
+            using (var stringReader = new System.IO.StringReader(responseContent))
+            {
+                var serializer = new XmlSerializer(typeof(Teacher));
+                return serializer.Deserialize(stringReader) as Teacher;
+            }
+        }
+
     }
 }

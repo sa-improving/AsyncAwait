@@ -11,5 +11,6 @@ namespace Async_Thing_Module.ViewModel
         public int RandomNumber { get; set; }
         public string ChuckNorrisFact { get; set; }
         public List<Seleucid> Seleucids { get; set; }
+        public Teacher Teacher { get; set; }
     }
 }

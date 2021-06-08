@@ -36,6 +36,9 @@ namespace Async_Thing_Module.Controllers
             var seleucids = await apiData.GetSeleucids();
             vm.Seleucids = seleucids;
 
+            var teacher = await apiData.GetATeacher();
+            vm.Teacher = teacher;
+
             return View(vm);
         }
 
