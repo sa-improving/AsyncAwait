@@ -56,5 +56,18 @@ namespace Async_Thing_Module.Models
             }
         }
 
+        public async Task<List<Teacher>> GetTeachers()
+        {
+            HttpResponseMessage response = await _client.GetAsync("https://seriouslyfundata.azurewebsites.net/api/yourteachers");
+            response.EnsureSuccessStatusCode();
+
+            string responseContent = await response.Content.ReadAsStringAsync();
+            using (var stringReader = new System.IO.StringReader(responseContent))
+            {
+                var serializer = new XmlSerializer(typeof(List<Teacher>));
+                return serializer.Deserialize(stringReader) as List<Teacher>;
+            }
+        }
+
     }
 }

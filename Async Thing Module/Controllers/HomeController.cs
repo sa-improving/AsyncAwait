@@ -39,6 +39,9 @@ namespace Async_Thing_Module.Controllers
             var teacher = await apiData.GetATeacher();
             vm.Teacher = teacher;
 
+            var teachers = await apiData.GetTeachers();
+            vm.Teachers = teachers;
+
             return View(vm);
         }
 

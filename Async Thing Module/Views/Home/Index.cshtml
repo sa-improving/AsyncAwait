@@ -36,6 +36,19 @@
             }
     </table>
     <div>
-        <p>Teacher: @Model.Teacher.Name Home State: @Model.Teacher.HomeState</p>
+        <p>Teacher: @Model.Teacher.Name || Home State: @Model.Teacher.HomeState</p>
     </div>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Home State</th>
+        </tr>
+        @foreach(var teacher in Model.Teachers)
+            {
+                <tr>
+                    <td>@teacher.Name</td>
+                    <td>@teacher.HomeState</td>
+                </tr>
+            }
+    </table>
 </div>
